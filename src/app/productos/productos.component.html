@@ -13,3 +13,21 @@
   <button (click)="borrarProducto(producto)">Borrar</button>
   <button (click)="agregarAlCarrito(producto)">Agregar al Carrito</button>
 </div>
+
+<div class="category-filters">
+  <button (click)="filtrarPorCategoria('exclusiva')">Exclusiva</button>
+  <button (click)="filtrarPorCategoria('otra-categoria')">
+    Otra Categoría
+  </button>
+  <button (click)="mostrarTodosLosProductos()">Mostrar Todos</button>
+</div>
+
+<div class="productos-container">
+  <div *ngFor="let producto of productos">
+    <!--<div *ngIf="!categoriaSeleccionada || categoriaSeleccionada === producto.nombreCategoria">  Reemplaza 'nombreCategoria' con el nombre correcto -->
+    <!-- Mostrar detalles del producto -->
+    <h2>{{ producto.nombre }}</h2>
+    <p>{{ producto.descripcion }}</p>
+    <!-- ... otros detalles del producto -->
+  </div>
+</div>

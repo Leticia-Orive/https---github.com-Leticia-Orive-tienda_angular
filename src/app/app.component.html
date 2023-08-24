@@ -11,13 +11,31 @@
     <app-barra-navegacion></app-barra-navegacion>
 
     <h1>Bienvenido a la tienda</h1>
-
+    <div class="carousel-container">
+      <carousel>
+        <slide *ngFor="let image of carouselImages; let i = index">
+          <img [src]="image.url" alt="Slide {{ i }}" />
+        </slide>
+      </carousel>
+    </div>
+    <div class="category-filters">
+      <button (click)="filtrarPorCategoria('exclusiva')">Exclusiva</button>
+      <button (click)="filtrarPorCategoria('otra-categoria')">
+        Otra Categoría
+      </button>
+      <!-- Agrega más botones de categoría -->
+    </div>
+    <div class="productos-container">
+      <div *ngFor="let producto of productosFiltrados">
+        <!-- Mostrar detalles del producto -->
+      </div>
+    </div>
     <router-outlet></router-outlet>
 
-    <!-- Aquí colocarás tu formulario de pago -->
+    <!-- Aquí colocarás tu formulario de pago 
     <form id="payment-form">
       <div id="card-element"></div>
       <button type="submit">Pagar</button>
-    </form>
+    </form>-->
   </body>
 </html>

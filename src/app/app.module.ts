@@ -19,7 +19,7 @@ import { EdicionProductoComponent } from './edicion-producto/edicion-producto.co
 import { ConfirmacionCompraComponent } from './confirmacion-compra/confirmacion-compra.component';
 import { GestionPedidosComponent } from './gestion-pedidos/gestion-pedidos.component';
 import { ProductosComponent } from './productos/productos.component';
-
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +50,7 @@ import { ProductosComponent } from './productos/productos.component';
     ReactiveFormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    CarouselModule.forRoot(),
   ],
 
   providers: [],

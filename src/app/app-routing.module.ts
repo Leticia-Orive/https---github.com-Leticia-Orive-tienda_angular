@@ -9,7 +9,7 @@ import { ProductosComponent } from './productos/productos.component';
 const routes: Routes = [
   // Otras rutas
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
-
+  { path: '', redirectTo: '/productos', pathMatch: 'full' },
   { path: 'productos', component: ProductosComponent },
   { path: 'productos/:id', component: DetallesProductoComponent },
   { path: 'usuarios/:id', component: PerfilUsuarioComponent },
