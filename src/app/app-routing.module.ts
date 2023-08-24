@@ -4,9 +4,13 @@ import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.componen
 import { CarritoComprasComponent } from './carrito-compras/carrito-compras.component';
 import { NgModule } from '@angular/core';
 import { GestionPedidosComponent } from './gestion-pedidos/gestion-pedidos.component';
+import { ProductosComponent } from './productos/productos.component';
 
 const routes: Routes = [
   // Otras rutas
+  { path: '', redirectTo: '/inicio', pathMatch: 'full' },
+
+  { path: 'productos', component: ProductosComponent },
   { path: 'productos/:id', component: DetallesProductoComponent },
   { path: 'usuarios/:id', component: PerfilUsuarioComponent },
   { path: 'carrito', component: CarritoComprasComponent },
