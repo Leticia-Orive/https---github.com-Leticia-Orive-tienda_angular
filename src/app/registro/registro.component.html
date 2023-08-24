@@ -1,0 +1,13 @@
+<form (ngSubmit)="registrarse()" [formGroup]="registroForm">
+  <input type="text" formControlName="nombre" />
+  <div
+    *ngIf="
+      registroForm?.get('nombre')?.invalid &&
+      registroForm.get('nombre')?.touched
+    "
+  >
+    El nombre es requerido.
+  </div>
+  <!-- ... otros campos del formulario ... -->
+  <button type="submit" [disabled]="registroForm?.invalid">Registrarse</button>
+</form>

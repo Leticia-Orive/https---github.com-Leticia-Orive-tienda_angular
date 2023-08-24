@@ -1,0 +1,9 @@
+<div *ngIf="producto">
+  <h2>Editar Producto</h2>
+  <p>Nombre: {{ producto.nombre }}</p>
+  <p>Precio: {{ producto.precio }}</p>
+  <p>Cantidad: <input [(ngModel)]="producto.cantidad" /></p>
+  <!-- Por ejemplo, editar la cantidad -->
+  <!-- Otros campos de edición aquí -->
+  <button (click)="actualizarProducto(producto)">Actualizar</button>
+</div>

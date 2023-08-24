@@ -1,0 +1,157 @@
+<div class="carrito">
+  <h2>Carrito de Compras</h2>
+  <ul>
+    <li *ngFor="let producto of productosEnCarrito; let i = index">
+      {{ producto.nombre }} - {{ producto.precio | currency }} x
+      {{ producto.cantidad }}
+      <button (click)="ajustarCantidad(i, producto.cantidad - 1)">-</button>
+      <button (click)="ajustarCantidad(i, producto.cantidad + 1)">+</button>
+      <button (click)="removerProducto(i)">Remover</button>
+    </li>
+  </ul>
+  <button (click)="realizarCompra()">Realizar Compra</button>
+</div>
+<h2>Carrito de Compras</h2>
+
+<div *ngIf="productosEnCarrito.length > 0; else carritoVacio">
+  <div *ngFor="let producto of productosEnCarrito" class="producto-en-carrito">
+    <img
+      [src]="producto.imagen"
+      alt="{{ producto.nombre }}"
+      class="imagen-producto"
+    />
+    <h3>{{ producto.nombre }}</h3>
+    <p>Precio: {{ producto.precio }}</p>
+    <!-- Otros detalles del producto -->
+    <button (click)="eliminarProducto(producto)">Eliminar del carrito</button>
+  </div>
+  <div class="resumen-compra">
+    <!-- Resumen de la compra y formulario de finalización -->
+  </div>
+</div>
+
+<ng-template #carritoVacio>
+  <p>Tu carrito de compras está vacío.</p>
+</ng-template>
+
+<div *ngFor="let producto of productosEnCarrito" class="producto-en-carrito">
+  <h3>{{ producto.nombre }}</h3>
+  <p>Precio: ${{ producto.precio }}</p>
+  <!-- Agregar más detalles del producto si es necesario -->
+</div>
+<div *ngFor="let producto of productosEnCarrito; let i = index">
+  <h3>{{ producto.nombre }}</h3>
+  <p>Precio: ${{ producto.precio }}</p>
+  <!-- Mostrar más detalles del producto si es necesario -->
+</div>
+<div *ngFor="let producto of productosEnCarrito">
+  <!-- Mostrar detalles del producto -->
+  <button (click)="editarCarrito(producto)">Editar</button>
+</div>
+
+<div class="resumen-compra">
+  <h3>Resumen de la Compra</h3>
+  <p>Total: ${{ calcularTotal() }}</p>
+</div>
+<form (submit)="procederAlPago()">
+  <h3>Información de Envío y Pago</h3>
+  <!-- Agregar campos para la información de envío y pago -->
+  <button type="submit">Proceder al Pago</button>
+</form>
+
+<div *ngFor="let producto of productosEnCarrito" class="producto-carrito">
+  <img [src]="producto.imagen" alt="{{ producto.nombre }}" />
+  <h4>{{ producto.nombre }}</h4>
+  <p>Cantidad: {{ producto.cantidad }}</p>
+  <p>Precio unitario: ${{ producto.precio }}</p>
+  <button (click)="eliminarDelCarrito(producto)">Eliminar</button>
+</div>
+
+<div class="resumen-compra">
+  <h3>Resumen de la compra</h3>
+  <p>Total: ${{ calcularTotal() }}</p>
+  <!-- Agrega más detalles y formulario de envío/pago aquí -->
+</div>
+
+<ng-template #emptyCart>
+  <p>Tu carrito está vacío.</p>
+</ng-template>
+<form (submit)="procederAlPago()">
+  <h3>Información de Envío y Pago</h3>
+  <div class="form-group">
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" name="nombre" required />
+  </div>
+  <!-- Agrega más campos según sea necesario -->
+  <button type="submit">Proceder al Pago</button>
+</form>
+<form [formGroup]="formularioEnvioPago" (ngSubmit)="procederAlPago()">
+  <label for="nombre">Nombre</label>
+  <input type="text" id="nombre" formControlName="nombre" />
+
+  <label for="direccion">Dirección</label>
+  <input type="text" id="direccion" formControlName="direccion" />
+
+  <label for="tarjetaCredito">Tarjeta de Crédito</label>
+  <input type="text" id="tarjetaCredito" formControlName="tarjetaCredito" />
+
+  <!-- Agrega otros campos de envío y pago que necesites -->
+
+  <button type="submit">Confirmar Compra</button>
+</form>
+
+<div *ngIf="compraConfirmada">
+  <h2>¡Compra realizada con éxito!</h2>
+  <!-- Puedes mostrar el recibo u otra información relevante aquí -->
+  <form [formGroup]="formularioEnvioPago" (ngSubmit)="procederAlPago()">
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" formControlName="nombre" />
+    <label for="direccion">Dirección de Envío</label>
+    <input type="text" id="direccion" formControlName="direccion" />
+    <label for="tarjeta">Número de Tarjeta</label>
+    <input type="text" id="tarjeta" formControlName="tarjeta" />
+    <!-- Agrega más campos según tus necesidades -->
+
+    <button type="submit">Proceder al Pago</button>
+  </form>
+</div>
+<!-- carrito-compras.component.html -->
+
+<div *ngIf="!compraConfirmada">
+  <!-- Mostrar los productos en el carrito -->
+  <h2>Carrito de Compras</h2>
+  <div *ngFor="let producto of productosEnCarrito">
+    <div>{{ producto.nombre }} - {{ producto.precio }}</div>
+    <button (click)="eliminarDelCarrito(producto)">Eliminar</button>
+  </div>
+
+  <!-- Mostrar el total -->
+  <p>Total: {{ calcularTotal() }}</p>
+
+  <!-- Mostrar el formulario de envío/pago -->
+  <h2>Información de Envío y Pago</h2>
+  <form [formGroup]="formularioEnvioPago">
+    <div>
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" formControlName="nombre" />
+    </div>
+    <div>
+      <label for="direccion">Dirección:</label>
+      <input type="text" id="direccion" formControlName="direccion" />
+    </div>
+    <div>
+      <label for="tarjeta">Tarjeta de Crédito:</label>
+      <input type="text" id="tarjeta" formControlName="tarjeta" />
+    </div>
+    <!-- Agregar más campos según sea necesario -->
+  </form>
+
+  <!-- Botón para confirmar la compra -->
+  <button (click)="procederAlPago()">Confirmar Compra</button>
+</div>
+
+<div *ngIf="compraConfirmada">
+  <!-- Mostrar un mensaje de confirmación -->
+  <h2>¡Compra Confirmada!</h2>
+  <p>Gracias por tu compra.</p>
+</div>

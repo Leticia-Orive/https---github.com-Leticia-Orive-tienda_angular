@@ -1,0 +1,8 @@
+<div class="usuarios-lista">
+  <div *ngFor="let usuario of usuarios" class="usuario">
+    <h3>{{ usuario.nombre }}</h3>
+    <p>{{ usuario.correo }}</p>
+    <a [routerLink]="['/usuarios', usuario.id]">Ver perfil</a>
+    <a [routerLink]="'/carrito'">Ir al Carrito</a>
+  </div>
+</div>

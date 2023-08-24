@@ -1,0 +1,12 @@
+<form (ngSubmit)="realizarCompra()" #formulario="ngForm">
+  <label for="nombre">Nombre del Comprador:</label>
+  <input type="text" id="nombre" name="nombre" ngModel required />
+
+  <label for="direccion">Dirección de Envío:</label>
+  <input type="text" id="direccion" name="direccion" ngModel required />
+
+  <label for="cantidad">Cantidad:</label>
+  <input type="number" id="cantidad" name="cantidad" ngModel required />
+
+  <button type="submit">Realizar Compra</button>
+</form>

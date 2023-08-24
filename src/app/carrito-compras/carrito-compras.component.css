@@ -1,0 +1,54 @@
+.carrito {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.carrito h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.carrito ul {
+  list-style: none;
+  padding: 0;
+}
+
+.carrito li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.carrito button {
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.carrito button:hover {
+  background-color: #0056b3;
+}
+
+.carrito button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Estilos para el botón de realizar compra */
+.carrito button.compra {
+  background-color: #28a745;
+}
+
+.carrito button.compra:hover {
+  background-color: #1e7e34;
+}

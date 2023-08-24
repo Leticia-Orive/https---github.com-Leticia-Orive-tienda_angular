@@ -1,0 +1,21 @@
+<form (ngSubmit)="publicarProducto()" #formulario="ngForm">
+  <label for="nombre">Nombre del Producto:</label>
+  <input type="text" id="nombre" name="nombre" ngModel required />
+
+  <label for="descripcion">Descripción:</label>
+  <textarea id="descripcion" name="descripcion" ngModel required></textarea>
+
+  <label for="precio">Precio:</label>
+  <input type="number" id="precio" name="precio" ngModel required />
+
+  <label for="imagen">Imagen del Producto:</label>
+  <input
+    type="file"
+    id="imagen"
+    name="imagen"
+    (change)="cargarImagen($event)"
+    required
+  />
+
+  <button type="submit">Publicar Producto</button>
+</form>

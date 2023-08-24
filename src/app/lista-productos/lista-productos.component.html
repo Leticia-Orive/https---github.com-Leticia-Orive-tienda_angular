@@ -1,0 +1,57 @@
+<div class="productos-lista">
+  <div *ngFor="let producto of productos" class="producto">
+    <img [src]="producto.imagenUrl" alt="{{ producto.titulo }}" />
+    <h2>{{ producto.titulo }}</h2>
+    <p class="precio">{{ producto.precio | currency }}</p>
+    <p class="descripcion">{{ producto.descripcion }}</p>
+    <a [routerLink]="['/productos', producto.id]">Ver detalles</a>
+  </div>
+</div>
+<!-- lista-productos.component.html -->
+<form [formGroup]="formularioProducto" (ngSubmit)="guardarProducto()">
+  <label for="titulo">Título:</label>
+  <input type="text" id="titulo" formControlName="titulo" />
+
+  <label for="descripcion">Descripción:</label>
+  <textarea id="descripcion" formControlName="descripcion"></textarea>
+
+  <label for="imagen">Imagen:</label>
+  <input
+    type="file"
+    id="imagen"
+    accept="image/*"
+    (change)="cargarImagen($event)"
+  />
+
+  <button type="submit" [disabled]="formularioProducto.invalid">
+    Guardar Producto
+  </button>
+</form>
+<div class="filtros">
+  <label for="categoria">Categoría:</label>
+  <select id="categoria" [(ngModel)]="categoriaSeleccionada">
+    <option value="todas">Todas las categorías</option>
+    <option *ngFor="let categoria of categorias" [value]="categoria">
+      {{ categoria }}
+    </option>
+  </select>
+
+  <button (click)="aplicarFiltros()">Aplicar Filtros</button>
+</div>
+
+<!-- Lista de productos -->
+<div *ngFor="let producto of productosFiltrados" class="producto">
+  <!-- Mostrar detalles del producto aquí -->
+  <img [src]="producto.imagenUrl" alt="Imagen del producto" />
+  <h3>{{ producto.nombre }}</h3>
+  <p class="descripcion">{{ producto.descripcion }}</p>
+  <p class="precio">{{ producto.precio | currency }}</p>
+</div>
+
+<div *ngFor="let producto of productos" class="producto">
+  <h3>{{ producto.nombre }}</h3>
+  <p>{{ producto.descripcion }}</p>
+  <p>Precio: ${{ producto.precio }}</p>
+  <!-- Agregar botón "Agregar al carrito" -->
+  <button (click)="agregarAlCarrito(producto)">Agregar al carrito</button>
+</div>

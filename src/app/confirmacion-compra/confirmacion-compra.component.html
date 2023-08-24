@@ -1,0 +1,15 @@
+<div>
+  <h2>¡Compra confirmada!</h2>
+  <h3>Recibo de compra:</h3>
+  <p>Productos comprados:</p>
+  <ul>
+    <li *ngFor="let producto of detallesCompra.productos">
+      {{ producto.nombre }} - {{ producto.precio }}
+    </li>
+  </ul>
+  <p>Total: {{ detallesCompra.total }}</p>
+  <h3>Información de envío:</h3>
+  <p>Nombre: {{ detallesCompra.envio.nombre }}</p>
+  <p>Dirección: {{ detallesCompra.envio.direccion }}</p>
+  <p>Tarjeta: {{ detallesCompra.tarjeta }}</p>
+</div>

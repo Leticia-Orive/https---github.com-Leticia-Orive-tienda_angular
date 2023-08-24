@@ -1,0 +1,32 @@
+.navbar {
+  background-color: #007bff;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.navbar-brand {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-menu li {
+  font-size: 18px;
+}
+
+.navbar-menu li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.navbar-menu li a:hover {
+  text-decoration: underline;
+}
