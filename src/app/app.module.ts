@@ -20,6 +20,7 @@ import { ConfirmacionCompraComponent } from './confirmacion-compra/confirmacion-
 import { GestionPedidosComponent } from './gestion-pedidos/gestion-pedidos.component';
 import { ProductosComponent } from './productos/productos.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +45,8 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
       { path: 'productos', component: ListaProductosComponent },
       { path: 'productos/:id', component: DetallesProductoComponent },
       { path: 'carrito', component: CarritoComprasComponent }, // Ruta para el carrito
+      { path: 'registro', component: RegistroComponent }, // Ruta para registrarse
+      { path: 'inicio-sesion', component: InicioSesionComponent }, // Ruta para iniciar sesión
     ]), // Configura las rutas aquí
     ListaUsuariosModule, // Agrega el módulo aquí
     FormsModule,
